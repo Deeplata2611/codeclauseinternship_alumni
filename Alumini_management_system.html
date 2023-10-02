@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1, h2 {
+            color: blue;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid blue;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: yellow;
+        }
+
+        form {
+            max-width: 400px;
+            margin-top: 20px;
+        }
+
+        input, button {
+            margin-bottom: 10px;
+            padding: 8px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: red;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Alumni Management System</h1>
+</header>
+
+<section>
+    <h2>Alumni List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Graduation Year</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody id="alumniList">
+            <!-- Alumni information will be displayed here -->
+        </tbody>
+    </table>
+</section>
+
+<section>
+    <h2>Add New Alumni</h2>
+    <form id="addAlumniForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="gradYear">Graduation Year:</label>
+        <input type="number" id="gradYear" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+
+        <button type="button" onclick="addAlumni()">Add Alumni</button>
+    </form>
+</section>
+
+<script>
+    function addAlumni() {
+        const nameInput = document.getElementById("name");
+        const gradYearInput = document.getElementById("gradYear");
+        const emailInput = document.getElementById("email");
+
+        const name = nameInput.value.trim();
+        const gradYear = gradYearInput.value;
+        const email = emailInput.value.trim();
+
+        if (name === "" || gradYear === "" || email === "") {
+            alert("Please fill in all fields.");
+            return;
+        }
+
+        const alumniList = document.getElementById("alumniList");
+        const newRow = alumniList.insertRow();
+        const cell1 = newRow.insertCell(0);
+        const cell2 = newRow.insertCell(1);
+        const cell3 = newRow.insertCell(2);
+
+        cell1.textContent = name;
+        cell2.textContent = gradYear;
+        cell3.textContent = email;
+
+        // Clear input fields
+        nameInput.value = "";
+        gradYearInput.value = "";
+        emailInput.value = "";
+    }
+</script>
+
+</body>
+</html>
